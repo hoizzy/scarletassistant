@@ -15,6 +15,12 @@ client.remove_command('help')
 @client.event
 async def on_ready():
     await client.change_presence(game=Game(name='$help | Enderman slayerr'))
+    
+@client.command()
+async def session(member):
+    role = discord.utils.get(member.server.roles, name='Session')
+    client.add_roles(member, role)
+    client.say('Success! You are added to session list.')
 
 @client.command()
 async def say(*args):
